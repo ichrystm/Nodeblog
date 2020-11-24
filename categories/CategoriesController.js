@@ -17,7 +17,7 @@ router.post("/categories/save", (req, res) => {
       res.redirect("/admin/categories");
     })
   }else{
-    res.redirect("admin/categories/new");
+    res.redirect("/admin/categories/new");
   }
 });
 
