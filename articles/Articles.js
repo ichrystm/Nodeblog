@@ -20,11 +20,9 @@ const Article = connection.define("articles", {
 
 })
 
-//Article.sync({force: true});
-
-// 1-1
-Article.belongsTo(Category);
-// 1-M
 Category.hasMany(Article);
+Article.belongsTo(Category);
+
+//Article.sync({force: true});
 
 module.exports = Article;
