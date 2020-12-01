@@ -17,7 +17,15 @@
       </tr>
     </thead>
     <tbody>
-  
+      <% articles.forEach(article => { %>
+        <th><%= article.id %></th>
+        <th><%= article.title %></th>
+        <th><%= article.slug %></th>
+        <th><%= article.category.title %></th>
+        <th><button class="btn btn-danger">Deletar</button>
+          <br>
+        <button class="btn btn-warning">Editar</button></th>
+      <% }) %>
     </tbody>
   </table>
 </div>
