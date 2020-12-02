@@ -59,6 +59,27 @@ app.get("/:slug", (req, res) => {
   })
 })
 
+app.get("/category/:slug", (req, res) => {
+  var slug = req.params.slug;
+  Category.findOne({
+    where: {
+      slug: slug
+    },
+    include: [{model: Article}]
+  }).then( category => {
+    if(category != undefined){
+      Category.findAll().then(categories => {
+        res.render("index", {articles: category.articles, categories: categories});
+      })
+    }else{
+      res.send("1");
+      console.log("categoria: " + category);
+    }
+  }).catch(err => {
+    res.send("2");
+  })
+})
+
 app.listen(port, () => {
   console.log("Servidor online na porta " + port);
 })
