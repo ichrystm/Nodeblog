@@ -4,5 +4,8 @@
   </a>
   <ul class="navbar-nav mr-auto">
     <a class="nav-link" href="/">Home</a>
+    <% categories.forEach(category => { %>
+      <a class="nav-link" href=""><%= category.title %></a>
+    <% }) %>
   </ul>
 </nav>
