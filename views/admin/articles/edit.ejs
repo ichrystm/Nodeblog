@@ -14,12 +14,20 @@
         <br>
         <label>Categoria</label>
         <select name="categoryId" class="form-control">
+          <% categories.forEach(category => { %>
+            <% if(category.title == article.category.title) { %>
+              <option value="<%= category.id %>"><%= article.category.title %></option>
+            <% } %>
+          <% }) %>
         <% categories.forEach(category => { %>
-          <option value="<%= category.id %>"><%= category.title %></option>
+          <% if(category.title != article.category.title) { %>
+            <option value="<%= category.id %>"><%= category.title %></option>
+          <% } %>
         <% }) %> 
         </select>
         <br>
-        <button class="btn btn-success">Cadastrar</button>
+        <input type="hidden" name="id" value="<%= article.id %>">
+        <button class="btn btn-success">Submeter</button>
       </form>
     </div>
   </div>

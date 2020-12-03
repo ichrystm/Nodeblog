@@ -72,11 +72,10 @@ app.get("/category/:slug", (req, res) => {
         res.render("index", {articles: category.articles, categories: categories});
       })
     }else{
-      res.send("1");
-      console.log("categoria: " + category);
+      res.redirect("/");
     }
   }).catch(err => {
-    res.send("2");
+    res.redirect("/");
   })
 })
 
