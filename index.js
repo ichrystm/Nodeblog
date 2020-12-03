@@ -79,6 +79,7 @@ app.get("/category/:slug", (req, res) => {
   })
 })
 
+
 app.listen(port, () => {
   console.log("Servidor online na porta " + port);
 })
