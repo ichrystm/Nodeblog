@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const port = 8080;
+const session = require("express-session");
 const connection = require("./database/database");
+
 
 const categoriesController = require("./categories/CategoriesController");
 const articlesController = require("./articles/ArticlesController");
@@ -13,6 +15,11 @@ const Category = require("./categories/Category");
 const User = require("./user/User");
 
 app.set('view engine', 'ejs');
+
+app.use(session({
+  secret: "chernobyl",
+  cookie: {maxAge: 30000}
+}))
 
 app.use(express.static('public'));
 
@@ -30,6 +37,14 @@ connection.authenticate()
 app.use("/", categoriesController);
 app.use("/", articlesController);
 app.use("/", userController);
+
+app.get("/session", (req, res) => {
+
+});
+
+app.get("/leitura", (req, res) => {
+  
+})
 
 app.get("/", (req, res) => {
   Article.findAll({
